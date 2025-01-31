@@ -691,26 +691,66 @@ ul li a.active svg {
     display: flex;
     flex-direction: column;
 }
-
+/* Container utama */
 .attendance-summary {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap; /* Mencegah turun ke bawah */
+    gap: 10px;
     margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Warna latar belakang */
+    border-radius: 10px; /* Membuat sudut lebih halus */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
 }
 
+/* Box setiap kategori */
 .attendance-box {
+    flex: 1; /* Membuat setiap box memiliki ukuran yang sama */
     text-align: center;
     font-size: 20px;
     font-weight: bold;
     color: #333;
+    padding: 15px;
+    background: white; /* Warna latar belakang box */
+    border-radius: 8px; /* Membuat sudut lebih halus */
+    border: 1px solid #ddd; /* Border tipis */
+    transition: transform 0.2s, box-shadow 0.2s; /* Efek hover */
 }
 
+/* Efek hover */
+.attendance-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Text kecil di dalam box */
 .attendance-box span {
     display: block;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: normal;
     color: #777;
+    margin-top: 5px;
 }
+
+/* Responsif untuk layar kecil */
+@media (max-width: 600px) {
+    .attendance-summary {
+        flex-direction: row; /* Pastikan tetap horizontal */
+        flex-wrap: nowrap;
+        overflow-x: auto; /* Jika terlalu panjang, bisa digeser ke samping */
+        padding: 10px 5px;
+    }
+
+    .attendance-box {
+        min-width: 100px; /* Lebar minimal agar tetap terbaca */
+        flex-shrink: 0; /* Hindari mengecil berlebihan */
+        font-size: 18px; /* Sedikit lebih kecil agar pas di HP */
+        padding: 12px;
+    }
+}
+
 
 .attendance-form {
     display: flex;
@@ -791,14 +831,7 @@ ul li a.active svg {
         padding: 10px;
     }
 
-    .attendance-summary {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .attendance-box {
-        font-size: 18px;
-    }
+    
 
     .input-field {
         padding: 8px;
